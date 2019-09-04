@@ -1,0 +1,2 @@
+rm -rf run_*
+rm -rf *.sh
