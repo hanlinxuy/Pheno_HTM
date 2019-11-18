@@ -191,6 +191,7 @@ def multi_run():
 			path_to_rm = direc.split('/')[1]
 			try:
 				os.system('rm -rf '+path_to_rm)
+				os.system('rm -rf tmp*')
 			except:
 				continue
 		os.system('mv *.xml pp_HppHmm_xml_data/')
