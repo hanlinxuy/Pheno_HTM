@@ -26,15 +26,15 @@ class Analysis_interface_200(Analysis_interface):
     y_title = ''
 
     def read_one_point(self,reader):
-        x = float(reader.get_parameter("lam1"))
-        y = float(reader.get_xsec())
+        x = float(reader.get_parameter("mHpp"))
+        y = float(reader.get_branch_ratio("H++",decay_par_1="ta+",decay_par_2="mu+"))
         return x,y
 
     def selection_criteria(self,reader):
         PASS = bool( abs(float(reader.get_parameter("mHpp"))-200.) < 2. )
         return PASS 
 
-class Analysis_interface_450(Analysis_interface):
+class Analysis_interface_450(Analysis_interface_200):
 
     input_path = ''
     list_of_infile = []
@@ -43,17 +43,12 @@ class Analysis_interface_450(Analysis_interface):
     list_yaxis = []
     x_title = ''
     y_title = ''
-
-    def read_one_point(self,reader):
-        x = float(reader.get_parameter("lam1"))
-        y = float(reader.get_xsec())
-        return x,y
 
     def selection_criteria(self,reader):
         PASS = bool( abs(float(reader.get_parameter("mHpp"))-450.) < 2. )
         return PASS 
 
-class Analysis_interface_500(Analysis_interface):
+class Analysis_interface_500(Analysis_interface_200):
 
     input_path = ''
     list_of_infile = []
@@ -62,20 +57,14 @@ class Analysis_interface_500(Analysis_interface):
     list_yaxis = []
     x_title = ''
     y_title = ''
-
-    def read_one_point(self,reader):
-        x = float(reader.get_parameter("lam1"))
-        y = float(reader.get_xsec())
-        return x,y
-
     def selection_criteria(self,reader):
         PASS = bool( abs(float(reader.get_parameter("mHpp"))-500.) < 2. )
         return PASS 
 
 if __name__ == '__main__':
 
-    analysis = MultiCurve('analysis_lam1_xsec')
-    analysis.set_title('lam1','xsec')
+    analysis = MultiCurve('analysis_H++_w+w+')
+    analysis.set_title('mass','br(Hpp->ee)')
     dict_comp = {}
 
     analysis_200 = Analysis_interface_200(input_path = 'pp_HppHmm_xml_data')

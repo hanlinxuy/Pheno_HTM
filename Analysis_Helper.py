@@ -29,11 +29,11 @@ class XML_single_data(object):
 			if decay_node.nodeType == 1:
 				self.__dict_width[decay_node.getAttribute("particle")] = decay_node.getAttribute("width")
 
-		for fs_node in decay_node.childNodes:
-			if fs_node.nodeType == 1:
-				list_tmp = fs_node.getAttribute("final_state").split("_")
-				self.__dict_decay[decay_node.getAttribute("particle"),list_tmp[0],list_tmp[1]] = fs_node.getAttribute("branch_ratio")
-				self.__dict_decay[decay_node.getAttribute("particle"),list_tmp[1],list_tmp[0]] = fs_node.getAttribute("branch_ratio")
+			for fs_node in decay_node.childNodes:
+				if fs_node.nodeType == 1:
+					list_tmp = fs_node.getAttribute("final_state").split("_")
+					self.__dict_decay[decay_node.getAttribute("particle"),list_tmp[0],list_tmp[1]] = fs_node.getAttribute("branch_ratio")
+					self.__dict_decay[decay_node.getAttribute("particle"),list_tmp[1],list_tmp[0]] = fs_node.getAttribute("branch_ratio")
 
 	def get_process_info(self):
 
@@ -69,8 +69,7 @@ class XML_single_data(object):
 		 	return self.__dict_decay[higgs_name,decay_par_1,decay_par_2]
 		except:
 			print "check name of higgs and final state particle"
-                        return 0
-
+			return 0
 
 	def AsStr(self):	
 		from xml.dom.minidom import parse
@@ -100,14 +99,11 @@ class XML_single_data(object):
 					print decay_node.getAttribute("particle"),fs_node.getAttribute("final_state"),fs_node.getAttribute("branch_ratio")
 	
 
-def simple_analysis():
+def simple_analysis(xml_file):
 
-	tmp = XML_single_data(xml_file = "pp_HppHmm_xml_data/pp_HppHmm_1.xml")
-	print "process_info",tmp.get_process_info()
-	print "xsec",tmp.get_xsec()
-	print "parameter mu:",tmp.get_parameter("mu")
-	print "decay width",tmp.get_width("H++")
-	print "decay branch ratio H++ > ta+ mu+",tmp.get_branch_ratio("H++",decay_par_1="ta+",decay_par_2="mu+")
+	tmp = XML_single_data(xml_file = xml_file)
+	print tmp.get_branch_ratio(higgs_name='H++', decay_par_1='w+',decay_par_2='w+')
+	#tmp.AsStr()
 
 
 def full_analysis_example(path = "pp_HppHmm_xml_data"):
@@ -120,11 +116,11 @@ def full_analysis_example(path = "pp_HppHmm_xml_data"):
 		print "process_info",tmp.get_process_info()
 		print "xsec",tmp.get_xsec()
 
-	
 if  __name__ == '__main__':
 	
-	#simple_analysis()
-	full_analysis_example()
+
+	simple_analysis(xml_file = 'pp_HppHmm_xml_data/pp_HppHmm_1041.xml')
+	#full_analysis_example()
 
 
 
