@@ -1,2 +1,2 @@
-export madgraph_path=$(pwd)/../MG5_aMC_v2_6_6/bin/mg5_aMC/
+export madgraph_path=$(pwd)/../MG5_aMC_v2_6_6/bin/mg5_aMC
 export root_path=$(pwd)

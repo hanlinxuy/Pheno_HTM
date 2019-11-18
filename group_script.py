@@ -26,7 +26,7 @@ def group_script(argv):
 				break
 		f.write("sleep 400 \n")
                 f.write("echo 400s gone. Kill all job   \n")
-                f.write("ps -ef | grep "+USERNAME+" | grep -v grep | grep -v sh | grep -v bash | grep -v sshd | grep -v tcsh | grep -v | awk '{print $2}' | xargs kill -9")
+                f.write("ps -ef | grep "+USERNAME+" | grep -v grep | grep -v sh | grep -v bash | grep -v sshd | grep -v tcsh | awk '{print $2}' | xargs kill -9")
 
 		f0.write("sh part_shell_"+str(i)+".sh \n")
 		

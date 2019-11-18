@@ -12,8 +12,10 @@ def analysis_example(path = "pp_HppHmm_xml_data"):
 		print "parameter h++ mass:",tmp.get_parameter("mHpp")#,"h+ mass:",tmp.get_parameter("mHp")
  	        print "decay width",tmp.get_width("H++")
  	        print "decay branch ratio H++ > ta+ mu+",tmp.get_branch_ratio("H++",decay_par_1="ta+",decay_par_2="mu+")
- 	
-from ROOT import *	
+try: 	
+	from ROOT import *	
+except:
+	print "no ROOT installed"
 def plot_ROOT_style():
 		
 	path = "pp_HppHmm_xml_data"
@@ -64,12 +66,34 @@ def plot_ROOT_style():
 def plot_matplotlib_style():
 	
 	import numpy
-	import matplotlib
-	        
+	#import matplotlib
+	import matplotlib.pyplot as plt
+       
+	mass_ = []
+        xsec_ = []
+        list_of_xml = glob.glob(path+"/*.xml")
+        for xml in list_of_xml:
+                tmp = Analysis_Helper.XML_single_data(xml_file = xml)
+                mass_.append(float(tmp.get_parameter("mHpp")))
+                xsec_.append(float(tmp.get_xsec()))
+                if abs(float(tmp.get_parameter("mHpp"))-200.)  < 2:
+                        SinAlpha_200.append(float(tmp.get_parameter("sinalpha")))
+                        xsec_200.append(float(tmp.get_xsec()))
+
+
+        arr_SinAlpha_200 = array.array("f",SinAlpha_200)
+        arr_xsec_200 =  array.array("f",xsec_200)
+
+        arr_mass_ = array.array("f",mass_)
+        arr_sec_  = array.array("f",xsec_)
+
+	plt.scatter(arr_SinAlpha_200, arr_xsec_200, alpha=0.6)
+	plt.savefig('./SinAlphaxsec_200.jpg')	
+	
 		
 	 
 if __name__ in '__main__':
 		
 #	analysis_example()                
 #	plot_ROOT_style()
-
+	plot_matplotlib_style()
