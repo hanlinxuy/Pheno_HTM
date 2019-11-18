@@ -173,7 +173,7 @@ def multi_run():
 		dict_process[i] =  config_files[i:i+cores]
 		#print dict_process[i]
 	#print len(config_files),len(dict_process)
-	for i in range(0,1):#len(dict_process)):
+	for i in range(0,len(dict_process)):
 		import multiprocessing
 		pool = multiprocessing.Pool(processes=cores)
 		pool.map(gen_raw_data_conf, dict_process[i])
@@ -194,7 +194,7 @@ def multi_run():
 			except:
 				continue
 		os.system('mv *.xml pp_HppHmm_xml_data/')
-		print "finished"
+		print "finished",i
 
 def gen_raw_data_conf(command_dat):
 
