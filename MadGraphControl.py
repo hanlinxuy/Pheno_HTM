@@ -11,6 +11,7 @@ parser.add_option("-g","--Do_GenConf" ,dest="do_GenConf" ,help="Generate conf  "
 parser.add_option("-r","--do_running" ,dest="do_running" ,help="run command  "   ,action = "store_true", default = False)
 
 parser.add_option("-m","--mg5_exe_path" ,dest="mg5_exe_path" ,help="mg5_exe_path  " ,action = "store",type=str, default = os.environ['madgraph_path'])
+parser.add_option("--mul" ,dest="do_multicores" ,help="do_multicores  " ,action = "store_true", default = False)
 parser.add_option("--cmd" ,dest="command" ,action = "store", type=str)
 parser.add_option("--debug_mode" ,dest="debug_mode" ,action = "store_true", default = False)
 parser.add_option("--time_limit" ,dest="time_limit" ,action = "store", type=float,default = 300)
@@ -161,8 +162,48 @@ class ParaM(object):
 		fp = open(self.title.replace("dat","xml"), 'w')
 		doc.writexml(fp, indent='\t', addindent='\t', newl='\n', encoding="utf-8")		
 		
-	
-def gen_raw_data(command_dat ,mg5_exe_path, print_log = False , time_limit = 300 ):
+
+def multi_run():
+	import os
+	cores = int(os.environ['defined_cores'])
+	import glob
+	config_files = glob.glob('pp_HppHmm_config/*.dat')
+	dict_process = {}
+	for i in range(0,len(config_files),cores):
+		dict_process[i] =  config_files[i:i+cores]
+		#print dict_process[i]
+	#print len(config_files),len(dict_process)
+	for i in range(0,1):#len(dict_process)):
+		import multiprocessing
+		pool = multiprocessing.Pool(processes=cores)
+		pool.map(gen_raw_data_conf, dict_process[i])
+		os.system('killall check')
+		os.system('killall f951')
+		os.system('killall make')
+		os.system('killall gfortran')
+		os.system('rm -f ME5_debug')
+		os.system('rm py.py')
+		os.system('rm nsqso_born.inc')
+		import time 
+		time.sleep(30)
+		for dir_ in dict_process[i]:
+			direc = dir_.split('.')[0]
+			path_to_rm = direc.split('/')[1]
+			try:
+				os.system('rm -rf '+path_to_rm)
+			except:
+				continue
+		os.system('mv *.xml pp_HppHmm_xml_data/')
+		print "finished"
+
+def gen_raw_data_conf(command_dat):
+
+	import os
+	mg5_exe_path = os.environ['madgraph_path']
+	return gen_raw_data(command_dat ,mg5_exe_path)
+
+
+def gen_raw_data(command_dat ,mg5_exe_path, print_log = False , time_limit = 180 ):
 
 	import shlex,subprocess
 	command_line  = mg5_exe_path+" "+command_dat
@@ -215,11 +256,12 @@ def gen_raw_data(command_dat ,mg5_exe_path, print_log = False , time_limit = 300
 	for tag in list_tag:
 		info.set_br(decay_info[tag])
 	info.to_xml()
+	import os
+	os.system('killall check')
+	return 
 	#info.AsStr()
 	#print cross_section
 	#print decay_info
-
-
 
 def Reader(file_name):
 	f = open(file_name,"r")
@@ -240,8 +282,8 @@ def Reader(file_name):
 	return set_tag,set_info
 
 def gen_conf(tag,info):
-	f = open(options.Prefix+"_"+str(tag)+".dat","w")	
 
+	f = open(options.Prefix+"_"+str(tag)+".dat","w")	
 	f.write(global_start("_"+str(tag)))
 	f.write("launch--name="+options.Prefix+"_"+str(tag)+"\n")
 	f.write(global_setting)
@@ -267,8 +309,8 @@ if __name__=='__main__':
 	
 	if options.do_GenConf:
 		#mg5 config
-		os.system("rm -rf "+options.Prefix+"_xml_data")
-                os.system("mkdir  "+options.Prefix+"_xml_data")
+		#os.system("rm -rf "+options.Prefix+"_xml_data")
+        #        os.system("mkdir  "+options.Prefix+"_xml_data")
 
 		os.system("rm -rf "+options.Prefix+"_config")
 		os.system("mkdir  "+options.Prefix+"_config")
@@ -277,13 +319,17 @@ if __name__=='__main__':
 			gen_conf(i,set_info[i])
 		os.system("mv "+options.Prefix+"*.dat "+options.Prefix+"_config")
 		#script
-		os.system("rm -rf "+options.Prefix+"_script")
-                os.system("mkdir  "+options.Prefix+"_script")
-		for i in range(1,set_tag+1):
-                       script_single(i,set_info[i])
-		os.system("mv "+options.Prefix+"*.sh "+options.Prefix+"_script")
+		#os.system("rm -rf "+options.Prefix+"_script")
+        #        os.system("mkdir  "+options.Prefix+"_script")
+		#for i in range(1,set_tag+1):
+        #               script_single(i,set_info[i])
+		#os.system("mv "+options.Prefix+"*.sh "+options.Prefix+"_script")
 	if options.do_running:
 		gen_raw_data(command_dat = options.command ,mg5_exe_path=options.mg5_exe_path, print_log = options.debug_mode , time_limit = options.time_limit )	
+	
+	if options.do_multicores:
+		multi_run()
+		
 
 	##test_datreader
 	

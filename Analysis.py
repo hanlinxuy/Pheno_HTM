@@ -4,18 +4,19 @@ def analysis_example(path = "pp_HppHmm_xml_data"):
         import glob
         list_of_xml = glob.glob(path+"/*.xml")
         for xml in list_of_xml:
-                print "=============file:"+xml+"==================================="
-                tmp = Analysis_Helper.XML_single_data(xml_file = xml)
-               	print "process_info",tmp.get_process_info()
-  	        print "xsec",tmp.get_xsec()
-   	        print "parameter mu:",tmp.get_parameter("mu")
-		print "parameter h++ mass:",tmp.get_parameter("mHpp")#,"h+ mass:",tmp.get_parameter("mHp")
- 	        print "decay width",tmp.get_width("H++")
- 	        print "decay branch ratio H++ > ta+ mu+",tmp.get_branch_ratio("H++",decay_par_1="ta+",decay_par_2="mu+")
+			print "=============file:"+xml+"==================================="
+			tmp = Analysis_Helper.XML_single_data(xml_file = xml)
+			print "process_info",tmp.get_process_info()
+			print "xsec",tmp.get_xsec()
+			print "parameter mu:",tmp.get_parameter("mu")
+			print "parameter h++ mass:",tmp.get_parameter("mHpp")#,"h+ mass:",tmp.get_parameter("mHp")
+			print "decay width",tmp.get_width("H++")
+			print "decay branch ratio H++ > ta+ mu+",tmp.get_branch_ratio("H++",decay_par_1="ta+",decay_par_2="mu+")
 try: 	
 	from ROOT import *	
 except:
 	print "no ROOT installed"
+
 def plot_ROOT_style():
 		
 	path = "pp_HppHmm_xml_data"
