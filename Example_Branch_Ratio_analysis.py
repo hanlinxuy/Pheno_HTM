@@ -86,4 +86,4 @@ if __name__ == '__main__':
         analysis.add_comp( name=comp , list_x_axis=dict_comp[comp]['data'][0], list_y_axis=dict_comp[comp]['data'][1] , color=dict_comp[comp]['color'])
 
     analysis.SetRange()
-    analysis.plot_matplotlib(debug = False,format_ = 'png')
+    analysis.plot_matplotlib(allow_pop=False,debug = False,format_ = 'png')

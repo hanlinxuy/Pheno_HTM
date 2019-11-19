@@ -213,11 +213,12 @@ class MultiCurve(object):
 		else:
 			c1.Print(self.x_title+'_vs_'+self.y_title+'.'+format_)
 
-	def plot_matplotlib(self,format_='png',debug=False):
+	def plot_matplotlib(self,format_='png',allow_pop=False,debug=False):
 
 		import array 
 		import matplotlib as mpl
-		mpl.use('Agg')
+		if not allow_pop:
+			mpl.use('Agg')
 		import matplotlib.pyplot as plt
 
 		for comp in self.list_comp:
