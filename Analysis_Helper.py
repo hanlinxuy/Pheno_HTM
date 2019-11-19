@@ -10,6 +10,7 @@ class XML_single_data(object):
 		self.__dict_fill()
 
 	def __dict_fill(self):
+		
 		from xml.dom.minidom import parse
 		import xml.dom.minidom
 		DOMTree = xml.dom.minidom.parse(self.xml_file)

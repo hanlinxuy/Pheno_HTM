@@ -186,8 +186,8 @@ class MultiCurve(object):
 				print x_arr
 				print y_arr
 			if self.auto_range:
-				self.mini = min(y_arr,self.mini)
-				self.maxi = min(y_arr,self.maxi)
+				self.mini = min(min(y_arr),self.mini)
+				self.maxi = max(max(y_arr),self.maxi)
 			gr[comp] = TGraph(len(x_arr),x_arr,y_arr)
 			gr[comp].SetLineColor(self.dict_list_color[comp])
 			gr[comp].SetMarkerColor(self.dict_list_color[comp])
@@ -213,6 +213,34 @@ class MultiCurve(object):
 		else:
 			c1.Print(self.x_title+'_vs_'+self.y_title+'.'+format_)
 
+	def plot_matplotlib(self,format_='png',debug=False):
+
+		import array 
+		import matplotlib as mpl
+		mpl.use('Agg')
+		import matplotlib.pyplot as plt
+
+		for comp in self.list_comp:
+			x_arr = array.array("f",self.dict_list_xaxis[comp])
+			y_arr = array.array("f",self.dict_list_yaxis[comp])
+			plt.scatter(x_arr, y_arr, alpha=0.6,label=comp,color=self.dict_list_color[comp])
+			if self.auto_range:
+				self.mini = min(min(y_arr),self.mini)
+				self.maxi = max(max(y_arr),self.maxi)
+		plt.legend(loc='upper right')
+		plt.xlabel(self.x_title)
+		plt.ylabel(self.y_title)
+		if not self.auto_range:
+			plt.ylim(self.mini, self.maxi)
+		elif self.mini == None or self.maxi == None:
+			print "range no change"
+		elif self.auto_range:
+			
+			plt.ylim(0.9*self.mini, 1.1*self.maxi)
+		if not self.out_name == None:
+			plt.savefig(self.out_name+'.'+format_)
+		else:
+			plt.savefig(self.x_title+'_vs_'+self.y_title+'.'+format_)
 
 if __name__ in '__main__':
 		

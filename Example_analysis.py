@@ -80,15 +80,15 @@ if __name__ == '__main__':
 
     analysis_200 = Analysis_interface_200(input_path = 'pp_HppHmm_xml_data')
     analysis_200.loop_all_files(debug = False)
-    dict_comp['Mhpp200'] = {'data':analysis_200.get_chain(),'color':kRed}
+    dict_comp['Mhpp200'] = {'data':analysis_200.get_chain(),'color':'red'}
 
     analysis_450 = Analysis_interface_450(input_path = 'pp_HppHmm_xml_data')
     analysis_450.loop_all_files(debug = False)
-    dict_comp['Mhpp450'] = {'data':analysis_450.get_chain(),'color':kBlue}  
+    dict_comp['Mhpp450'] = {'data':analysis_450.get_chain(),'color':'blue'}  
 
     analysis_500 = Analysis_interface_500(input_path = 'pp_HppHmm_xml_data')
     analysis_500.loop_all_files(debug = False)
-    dict_comp['Mhpp500'] = {'data':analysis_500.get_chain(),'color':kGreen}  
+    dict_comp['Mhpp500'] = {'data':analysis_500.get_chain(),'color':'green'}  
 
     for comp in dict_comp:
         if len(dict_comp[comp]['data'][0])<1:
@@ -97,4 +97,4 @@ if __name__ == '__main__':
         analysis.add_comp( name=comp , list_x_axis=dict_comp[comp]['data'][0], list_y_axis=dict_comp[comp]['data'][1] , color=dict_comp[comp]['color'])
 
     analysis.SetRange()
-    analysis.plot_root(debug = False)
+    analysis.plot_matplotlib(debug = False)
