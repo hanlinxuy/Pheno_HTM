@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<single_run excl="define EXCL = H ha h" process="generate p p &gt; H++ H-- /EXCL">
+		<parameters>
+			<parameter name="wh__2" value="auto"/>
+			<parameter name="wha" value="auto"/>
+			<parameter name="whp" value="auto"/>
+			<parameter name="whpp" value="auto"/>
+			<parameter name="mHpp" value="350.052247462"/>
+			<parameter name="mHp" value="350.052247462"/>
+			<parameter name="mha" value="311.348587947"/>
+			<parameter name="mh__2" value="311.348636569"/>
+			<parameter name="mh" value="311.348587947"/>
+			<parameter name="vt" value=""/>
+			<parameter name="sinalpha" value="0.000834887271587"/>
+			<parameter name="mu" value="0.226536557920"/>
+			<parameter name="lam1" value="1.290106058121"/>
+			<parameter name="lam2" value="1.973763406277"/>
+			<parameter name="lam3" value="-0.09010756015778"/>
+			<parameter name="lam4" value="-0.8460141420364"/>
+		</parameters>
+		<cross_section>
+			<xsec_central_value value="0.006542"/>
+			<xsec_central_error value="1.412e-05"/>
+		</cross_section>
+		<DECAY>
+			<BSM_HIGGS particle="H++" width="1.840549e-05">
+				<decay branch_ratio="2.383970e-13" final_state="ta+_mu+"/>
+				<decay branch_ratio="1.282798e-12" final_state="ta+_ta+"/>
+				<decay branch_ratio="5.057370e-14" final_state="mu+_e+"/>
+				<decay branch_ratio="4.807930e-16" final_state="ta+_e+"/>
+				<decay branch_ratio="4.931393e-13" final_state="e+_e+"/>
+				<decay branch_ratio="1.211143e-12" final_state="mu+_mu+"/>
+				<decay branch_ratio="3.702280e-01" final_state="w+_w+"/>
+			</BSM_HIGGS>
+			<BSM_HIGGS particle="H--" width="1.840549e-05">
+				<decay branch_ratio="2.383970e-13" final_state="ta-_mu-"/>
+				<decay branch_ratio="4.807930e-16" final_state="ta-_e-"/>
+				<decay branch_ratio="4.931393e-13" final_state="e-_e-"/>
+				<decay branch_ratio="5.057370e-14" final_state="mu-_e-"/>
+				<decay branch_ratio="1.282798e-12" final_state="ta-_ta-"/>
+				<decay branch_ratio="3.702280e-01" final_state="w-_w-"/>
+				<decay branch_ratio="1.211143e-12" final_state="mu-_mu-"/>
+			</BSM_HIGGS>
+			<BSM_HIGGS particle="H" width="3.094214e-06">
+				<decay branch_ratio="2.001826e-12" final_state="ve_ve"/>
+				<decay branch_ratio="5.139073e-07" final_state="mu+_mu-"/>
+				<decay branch_ratio="1.202003e-11" final_state="e+_e-"/>
+				<decay branch_ratio="2.227148e-04" final_state="c~_c"/>
+				<decay branch_ratio="3.927181e-01" final_state="h_h"/>
+				<decay branch_ratio="5.350411e-45" final_state="ve_vt"/>
+				<decay branch_ratio="1.453295e-04" final_state="ta+_ta-"/>
+				<decay branch_ratio="8.979775e-10" final_state="u~_u"/>
+				<decay branch_ratio="3.723397e-12" final_state="vm_vm"/>
+				<decay branch_ratio="3.046399e-03" final_state="b~_b"/>
+				<decay branch_ratio="2.140164e-44" final_state="vm_vt"/>
+				<decay branch_ratio="1.108083e-03" final_state="w-_w+"/>
+				<decay branch_ratio="6.027574e-01" final_state="z_z"/>
+				<decay branch_ratio="3.507892e-09" final_state="d~_d"/>
+				<decay branch_ratio="1.161059e-11" final_state="vt_vt"/>
+				<decay branch_ratio="1.408729e-06" final_state="s~_s"/>
+				<decay branch_ratio="8.560658e-44" final_state="ve_vm"/>
+			</BSM_HIGGS>
+			<BSM_HIGGS particle="H+" width="2.352907e-05">
+				<decay branch_ratio="3.879383e-13" final_state="e+_vm"/>
+				<decay branch_ratio="7.327661e-13" final_state="e+_ve"/>
+				<decay branch_ratio="4.559162e-09" final_state="s~_u"/>
+				<decay branch_ratio="2.293520e-04" final_state="s~_t"/>
+				<decay branch_ratio="5.923457e-14" final_state="e+_vt"/>
+				<decay branch_ratio="1.409449e-05" final_state="s~_c"/>
+				<decay branch_ratio="8.797569e-02" final_state="w+_h"/>
+				<decay branch_ratio="4.086284e-06" final_state="ta+_vm"/>
+				<decay branch_ratio="1.448294e-01" final_state="b~_t"/>
+				<decay branch_ratio="2.473680e-09" final_state="b~_u"/>
+				<decay branch_ratio="8.441486e-07" final_state="ta+_ve"/>
+				<decay branch_ratio="3.466879e-07" final_state="b~_c"/>
+				<decay branch_ratio="4.694884e-06" final_state="ta+_vt"/>
+				<decay branch_ratio="1.660034e-08" final_state="mu+_vt"/>
+				<decay branch_ratio="4.271422e-06" final_state="d~_t"/>
+				<decay branch_ratio="2.775113e-10" final_state="d~_u"/>
+				<decay branch_ratio="1.124457e-01" final_state="z_w+"/>
+				<decay branch_ratio="7.873058e-09" final_state="mu+_ve"/>
+				<decay branch_ratio="9.559515e-09" final_state="mu+_vm"/>
+				<decay branch_ratio="7.201350e-07" final_state="d~_c"/>
+			</BSM_HIGGS>
+			<BSM_HIGGS particle="H-" width="2.352907e-05">
+				<decay branch_ratio="4.271422e-06" final_state="d_t~"/>
+				<decay branch_ratio="1.409449e-05" final_state="s_c~"/>
+				<decay branch_ratio="3.466879e-07" final_state="b_c~"/>
+				<decay branch_ratio="1.448294e-01" final_state="b_t~"/>
+				<decay branch_ratio="8.797569e-02" final_state="w-_h"/>
+				<decay branch_ratio="4.086284e-06" final_state="ta-_vm"/>
+				<decay branch_ratio="4.559162e-09" final_state="s_u~"/>
+				<decay branch_ratio="2.775113e-10" final_state="d_u~"/>
+				<decay branch_ratio="5.923457e-14" final_state="e-_vt"/>
+				<decay branch_ratio="3.879383e-13" final_state="e-_vm"/>
+				<decay branch_ratio="7.327661e-13" final_state="e-_ve"/>
+				<decay branch_ratio="8.441486e-07" final_state="ta-_ve"/>
+				<decay branch_ratio="7.201350e-07" final_state="d_c~"/>
+				<decay branch_ratio="1.660034e-08" final_state="mu-_vt"/>
+				<decay branch_ratio="4.694884e-06" final_state="ta-_vt"/>
+				<decay branch_ratio="9.559515e-09" final_state="mu-_vm"/>
+				<decay branch_ratio="2.293520e-04" final_state="s_t~"/>
+				<decay branch_ratio="1.124457e-01" final_state="z_w-"/>
+				<decay branch_ratio="7.873058e-09" final_state="mu-_ve"/>
+				<decay branch_ratio="2.473680e-09" final_state="b_u~"/>
+			</BSM_HIGGS>
+			<BSM_HIGGS particle="ha" width="2.683537e-06">
+				<decay branch_ratio="2.308178e-12" final_state="ve_ve"/>
+				<decay branch_ratio="9.934817e-01" final_state="z_h"/>
+				<decay branch_ratio="5.608971e-07" final_state="mu+_mu-"/>
+				<decay branch_ratio="1.311909e-11" final_state="e+_e-"/>
+				<decay branch_ratio="2.430952e-04" final_state="c~_c"/>
+				<decay branch_ratio="1.338743e-11" final_state="vt_vt"/>
+				<decay branch_ratio="6.169216e-45" final_state="ve_vt"/>
+				<decay branch_ratio="1.586385e-04" final_state="ta+_ta-"/>
+				<decay branch_ratio="9.800849e-10" final_state="u~_u"/>
+				<decay branch_ratio="4.293211e-12" final_state="vm_vm"/>
+				<decay branch_ratio="3.327982e-03" final_state="b~_b"/>
+				<decay branch_ratio="2.467686e-44" final_state="vm_vt"/>
+				<decay branch_ratio="9.870746e-44" final_state="ve_vm"/>
+				<decay branch_ratio="3.828639e-09" final_state="d~_d"/>
+				<decay branch_ratio="1.537538e-06" final_state="s~_s"/>
+			</BSM_HIGGS>
+		</DECAY>
+	</single_run>
