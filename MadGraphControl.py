@@ -319,12 +319,12 @@ if __name__=='__main__':
 		for i in range(1,set_tag+1):
 			gen_conf(i,set_info[i])
 		os.system("mv "+options.Prefix+"*.dat "+options.Prefix+"_config")
-		#script
-		#os.system("rm -rf "+options.Prefix+"_script")
-        #        os.system("mkdir  "+options.Prefix+"_script")
-		#for i in range(1,set_tag+1):
-        #               script_single(i,set_info[i])
-		#os.system("mv "+options.Prefix+"*.sh "+options.Prefix+"_script")
+		script
+		os.system("rm -rf "+options.Prefix+"_script")
+                os.system("mkdir  "+options.Prefix+"_script")
+		for i in range(1,set_tag+1):
+                       script_single(i,set_info[i])
+		os.system("mv "+options.Prefix+"*.sh "+options.Prefix+"_script")
 	if options.do_running:
 		gen_raw_data(command_dat = options.command ,mg5_exe_path=options.mg5_exe_path, print_log = options.debug_mode , time_limit = options.time_limit )	
 	
