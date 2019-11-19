@@ -120,7 +120,7 @@ def full_analysis_example(path = "pp_HppHmm_xml_data"):
 if  __name__ == '__main__':
 	
 
-	simple_analysis(xml_file = 'pp_HppHmm_xml_data/pp_HppHmm_1041.xml')
+	simple_analysis(xml_file = 'pp_HppHmm_xml_data/pp_HppHmm_1.xml')
 	#full_analysis_example()
 
 
