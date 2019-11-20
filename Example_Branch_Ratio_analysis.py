@@ -1,5 +1,7 @@
+import os
+import sys
+sys.path.append(os.environ['phenoHTM_code_path'])
 from Analysis import *
-
 try: 	
 	from ROOT import *	
 except:
@@ -67,15 +69,15 @@ if __name__ == '__main__':
     analysis.set_title('mass','br(Hpp->ee)')
     dict_comp = {}
 
-    analysis_200 = Analysis_interface_200(input_path = 'pp_HppHmm_xml_data')
+    analysis_200 = Analysis_interface_200(input_path = os.environ['phenoHTM_code_path']+'/'+'pp_HppHmm_xml_data')
     analysis_200.loop_all_files(debug = False)
     dict_comp['Mhpp200'] = {'data':analysis_200.get_chain(),'color':'red'}
 
-    analysis_450 = Analysis_interface_450(input_path = 'pp_HppHmm_xml_data')
+    analysis_450 = Analysis_interface_450(input_path = os.environ['phenoHTM_code_path']+'/'+'pp_HppHmm_xml_data')
     analysis_450.loop_all_files(debug = False)
     dict_comp['Mhpp450'] = {'data':analysis_450.get_chain(),'color':'blue'}  
 
-    analysis_500 = Analysis_interface_500(input_path = 'pp_HppHmm_xml_data')
+    analysis_500 = Analysis_interface_500(input_path = os.environ['phenoHTM_code_path']+'/'+'pp_HppHmm_xml_data')
     analysis_500.loop_all_files(debug = False)
     dict_comp['Mhpp500'] = {'data':analysis_500.get_chain(),'color':'green'}  
 

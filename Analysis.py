@@ -238,10 +238,13 @@ class MultiCurve(object):
 		elif self.auto_range:
 			
 			plt.ylim(0.9*self.mini, 1.1*self.maxi)
+		
 		if not self.out_name == None:
 			plt.savefig(self.out_name+'.'+format_)
 		else:
 			plt.savefig(self.x_title+'_vs_'+self.y_title+'.'+format_)
+		if not allow_pop:
+			plt.show()
 
 if __name__ in '__main__':
 		
