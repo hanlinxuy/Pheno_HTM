@@ -243,7 +243,7 @@ class MultiCurve(object):
 			plt.savefig(self.out_name+'.'+format_)
 		else:
 			plt.savefig(self.x_title+'_vs_'+self.y_title+'.'+format_)
-		if not allow_pop:
+		if allow_pop:
 			plt.show()
 
 if __name__ in '__main__':
