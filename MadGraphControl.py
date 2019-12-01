@@ -265,6 +265,7 @@ def gen_raw_data(command_dat ,mg5_exe_path, print_log = False , time_limit = 180
 	#print decay_info
 
 def Reader(file_name):
+	
 	f = open(file_name,"r")
 	set_info = {}
 	set_tag  = 0
@@ -309,9 +310,7 @@ def script_single(tag,info):
 if __name__=='__main__':
 	
 	if options.do_GenConf:
-		#mg5 config
-		#os.system("rm -rf "+options.Prefix+"_xml_data")
-        #        os.system("mkdir  "+options.Prefix+"_xml_data")
+		
 
 		os.system("rm -rf "+options.Prefix+"_config")
 		os.system("mkdir  "+options.Prefix+"_config")
