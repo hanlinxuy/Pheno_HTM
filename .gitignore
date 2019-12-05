@@ -1,3 +1,5 @@
 pp_HppHmm_config/*
 pp_HppHmm_script/*
 *.pyc
+submit*
+condor*
