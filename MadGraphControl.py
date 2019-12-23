@@ -15,7 +15,11 @@ parser.add_option("--mul" ,dest="do_multicores" ,help="do_multicores  " ,action 
 parser.add_option("--cmd" ,dest="command" ,action = "store", type=str)
 parser.add_option("--debug_mode" ,dest="debug_mode" ,action = "store_true", default = False)
 parser.add_option("--time_limit" ,dest="time_limit" ,action = "store", type=float,default = 10e10)
+<<<<<<< HEAD
+parser.add_option("--mad_spin" ,dest="mad_spin" ,action = "store_true",default = False)
+=======
 parser.add_option("--mad_spin" ,dest="mad_spin" ,action = "store_true",default = True)
+>>>>>>> 071ccbccf2b82db148544cbf3d34ac0409c0bbff
 
 (options,args)=parser.parse_args()
 
@@ -117,9 +121,14 @@ class ParaM(object):
 		self.xsec_cen =  cs_str.split(" ")[cs_str.split(" ").index("+-")-1]
 		self.xsec_err = cs_str.split(" ")[cs_str.split(" ").index("+-")+1]
 
+<<<<<<< HEAD
+	def set_br(self,br_list):
+
+=======
 	def set_br(self,br_list,debug=False):
 		
 		
+>>>>>>> 071ccbccf2b82db148544cbf3d34ac0409c0bbff
 		self.dict_br[br_list[0]] = {}
 		self.dict_br[br_list[0]]["particle"] = br_list[0]
 		self.dict_br[br_list[0]]["width"]    = br_list[1]
@@ -140,10 +149,14 @@ class ParaM(object):
 							fs.append(detail)
 				
 				fs_str = "decay: "+fs[0]+"_"+fs[1]
+<<<<<<< HEAD
+		self.dict_br[br_list[0]][fs_str] = br
+=======
 				if debug:
                 		        print "debug set_br fs_str"
 		                        print fs_str
 				self.dict_br[br_list[0]][fs_str] = br
+>>>>>>> 071ccbccf2b82db148544cbf3d34ac0409c0bbff
 			
 	def AsStr(self):
 		print self.paraM
@@ -187,7 +200,10 @@ class ParaM(object):
 		
 				for comp in self.dict_br[particle]:
 					if comp.find("decay") > -1:
+<<<<<<< HEAD
+=======
 						#print "DDDBUUGGG:",comp
+>>>>>>> 071ccbccf2b82db148544cbf3d34ac0409c0bbff
 						node_br = doc.createElement("decay")
 						node_br.setAttribute( "final_state"  ,comp.replace("decay: ","") )
 						node_br.setAttribute( "branch_ratio" ,self.dict_br[particle][comp] )
@@ -347,7 +363,11 @@ def script_single(tag,info):
         f.write("echo  cp_"+options.Prefix+"_"+str(tag)+"\n")
 	f.write("cp "+os.environ['phenoHTM_code_path']+"/*.py . \n")
         f.write("echo python_"+options.Prefix+"_"+str(tag)+"\n")
+<<<<<<< HEAD
+	f.write("python HelloWorld.py ")
+=======
 
+>>>>>>> 071ccbccf2b82db148544cbf3d34ac0409c0bbff
 	f.write("python MadGraphControl.py -r -m "+options.mg5_exe_path+" --cmd "+os.environ['phenoHTM_code_path']+"/"+options.Prefix+"_config/"+options.Prefix+"_"+str(tag)+".dat --debug_mode \n")
 	f.write("echo python_"+options.Prefix+"_"+str(tag)+"\n")
 	f.write("cp *.xml "+os.environ['phenoHTM_code_path']+"/"+options.Prefix+"_xml_data/"+" \n")
