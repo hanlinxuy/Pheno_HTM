@@ -201,38 +201,33 @@ class ParaM(object):
 		
 
 def multi_run():
-	import os
-	cores = int(os.environ['defined_cores'])
-	import glob
-	config_files = glob.glob('pp_HppHmm_config/*.dat')
-	dict_process = {}
-	for i in range(0,len(config_files),cores):
-		dict_process[i] =  config_files[i:i+cores]
-		#print dict_process[i]
-	#print len(config_files),len(dict_process)
-	for i in dict_process:
-		import multiprocessing
-		pool = multiprocessing.Pool(processes=cores)
-		pool.map(gen_raw_data_conf, dict_process[i])
-		os.system('killall check')
-		os.system('killall f951')
-		os.system('killall make')
-		os.system('killall gfortran')
-		os.system('rm -f ME5_debug')
-		os.system('rm py.py')
-		os.system('rm nsqso_born.inc')
-		import time 
-		time.sleep(30)
-		for dir_ in dict_process[i]:
-			direc = dir_.split('.')[0]
-			path_to_rm = direc.split('/')[1]
-			try:
-				os.system('rm -rf '+path_to_rm)
-				os.system('rm -rf tmp*')
-			except:
-				continue
-		os.system('mv *.xml pp_HppHmm_xml_data/')
-		print "finished",i
+        import os
+        cores = int(os.environ['defined_cores'])
+        import glob
+        config_files = glob.glob('pp_HppHmm_config/*.dat')
+        dict_process = {}
+        for i in range(0,len(config_files),cores):
+                dict_process[i] =  config_files[i:i+cores]
+                #print dict_process[i]
+        #print len(config_files),len(dict_process)
+        for i in dict_process:
+                import multiprocessing
+                pool = multiprocessing.Pool(processes=cores)
+                pool.map(gen_raw_data_conf, dict_process[i])
+                os.system('killall check')
+                os.system('killall f951')
+                os.system('killall make')
+                os.system('killall gfortran')
+                os.system('rm -f ME5_debug')
+                os.system('rm py.py')
+                os.system('rm nsqso_born.inc')
+
+                import time
+                time.sleep(30)
+
+                os.system('mv *.xml pp_HppHmm_xml_data/')
+                print "finished",i
+
 
 def gen_raw_data_conf(command_dat):
 
