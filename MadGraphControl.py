@@ -88,21 +88,29 @@ class ParaM(object):
 						self.paraM[para] = i.split(" ")[-1].replace("\n","")
 						break
 			elif para in ["mHpp"]:
-				if i.find(para)>-1:
-					self.paraM[para] = i.split(" ")[-1].replace("\n","")
-                                        break
+				for i in self.cmd:
+                                        if i.find(para)>-1:
+                                                self.paraM[para] = i.split(" ")[-1].replace("\n","")
+                                                break
+
 			elif para in ["mHp"]:
-				if i.find(para)>-1 and i.find("mHpp")==-1:
-                                        self.paraM[para] = i.split(" ")[-1].replace("\n","")
-                                        break
+				for i in self.cmd:
+                                        if i.find(para)>-1:
+                                                self.paraM[para] = i.split(" ")[-1].replace("\n","")
+                                                break
+
 			elif para in ["mh__2"]:
-                                if i.find(para)>-1:
-                                        self.paraM[para] = i.split(" ")[-1].replace("\n","")
-                                        break
+                               for i in self.cmd:
+                                        if i.find(para)>-1:
+                                                self.paraM[para] = i.split(" ")[-1].replace("\n","")
+                                                break
+
 			elif para in ["mha"]:
-                                if i.find(para)>-1:
-                                        self.paraM[para] = i.split(" ")[-1].replace("\n","")
-                                        break
+                                for i in self.cmd:
+                                        if i.find(para)>-1:
+                                                self.paraM[para] = i.split(" ")[-1].replace("\n","")
+                                                break
+
 			elif para in ["mh"]:
 				#mh should be always 125
 				self.paraM[para] = "125.0"
